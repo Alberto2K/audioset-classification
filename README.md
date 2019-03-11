@@ -124,7 +124,7 @@ Developers within IBM will need to add an endpoint URL to all `aws s3` commands.
 
 ```
 $ aws --endpoint-url=http://s3-api.us-geo.objectstorage.softlayer.net s3 mb s3://training-audioset-classify
-$ aws --endpoint-url=http://s3-api.us-geo.objectstorage.softlayer.net s3mb s3://results-audioset-classify
+$ aws --endpoint-url=http://s3-api.us-geo.objectstorage.softlayer.net s3 mb s3://results-audioset-classify
 ```
 
 Now we can move the files to the cloud storage:
