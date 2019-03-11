@@ -166,6 +166,8 @@ Once the training is complete, you can access the model and weights from the clo
 
 The file we will be using for the next steps will be called `final_weights.h5`. It can be found on the object storage bucket `your_github_id-results-audioset-classify` under `<your_training_id>/models/main/balance_type=balance_in_batch/model_type=decision_level_multi_attention/final_weights.h5`. 
 
+For this lab, `final_weights.h5` has been provided within the repository.
+
 ![](doc/source/images/1.png)
 
 > The above screenshot shows the final weights/model checkpoints saved during training. 
