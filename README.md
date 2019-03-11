@@ -113,26 +113,26 @@ A few things to mention about the contents of the repository:
 
 * Create buckets on your Cloud Object Storage instance. This can be done either through the UI or through the command line as shown below. 
 
-We will create one bucket to put the training data and one bucket where the code will save the results/models at the end of training. 
+We will create one bucket to put the training data and one bucket where the code will save the results/models at the end of training. Bucket names must be unique across the IBM Cloud environment. One way to ensure uniqueness is to add a prefix such as your github id to the bucket name.
 
 ```
-$ aws s3 mb s3://training-audioset-classify
-$ aws s3 mb s3://results-audioset-classify
+$ aws s3 mb s3://your_github_id-training-audioset-classify
+$ aws s3 mb s3://your_github_id-results-audioset-classify
 ```
 
 Developers within IBM will need to add an endpoint URL to all `aws s3` commands. The above commands will thus look like this: 
 
 ```
-$ aws --endpoint-url=http://s3-api.us-geo.objectstorage.softlayer.net s3 mb s3://training-audioset-classify
-$ aws --endpoint-url=http://s3-api.us-geo.objectstorage.softlayer.net s3 mb s3://results-audioset-classify
+$ aws --endpoint-url=http://s3-api.us-geo.objectstorage.softlayer.net s3 mb s3://your_github_id-training-audioset-classify
+$ aws --endpoint-url=http://s3-api.us-geo.objectstorage.softlayer.net s3 mb s3://your_github_id-results-audioset-classify
 ```
 
 Now we can move the files to the cloud storage:
 
 ```
-$ aws s3 cp bal_train.h5 s3://training-audioset-classify/
-$ aws s3 cp unbal_train.h5 s3://training-audioset-classify/
-$ aws s3 cp eval.h5 s3://training-audioset-classify/
+$ aws s3 cp bal_train.h5 s3://your_github_id-training-audioset-classify/
+$ aws s3 cp unbal_train.h5 s3://your_github_id-training-audioset-classify/
+$ aws s3 cp eval.h5 s3://your_github_id-training-audioset-classify/
 ```
 
 ## 3. Setup and upload model to Watson ML 
@@ -164,7 +164,7 @@ Model-ID is 'training-GCtN_YRig'
 
 Once the training is complete, you can access the model and weights from the cloud object storage. The weights can be downloaded from the UI. 
 
-The file we will be using for the next steps will be called `final_weights.h5`. It can be found on the object storage bucket `results-audioset-classify` under `<your_training_id>/models/main/balance_type=balance_in_batch/model_type=decision_level_multi_attention/final_weights.h5`. 
+The file we will be using for the next steps will be called `final_weights.h5`. It can be found on the object storage bucket `your_github_id-results-audioset-classify` under `<your_training_id>/models/main/balance_type=balance_in_batch/model_type=decision_level_multi_attention/final_weights.h5`. 
 
 ![](doc/source/images/1.png)
 
@@ -173,7 +173,7 @@ The file we will be using for the next steps will be called `final_weights.h5`. 
 The file can be downloaded via UI or via command line using the below command:
 
 ```
-$ aws s3 cp s3://results-audioset-classify/<your_training_id>/models/main/balance_type=balance_in_batch/model_type=decision_level_multi_attention/final_weights.h5 final_weights.h5
+$ aws s3 cp s3://your_github_id-results-audioset-classify/<your_training_id>/models/main/balance_type=balance_in_batch/model_type=decision_level_multi_attention/final_weights.h5 final_weights.h5
 ```
 
 ## 4. Upload evaluation notebook on Watson Studio
