@@ -58,6 +58,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 		* Copy the relevant public or private endpoint. [I choose the us-geo private endpoint].
 * In addition setup your [AWS S3 command line](https://aws.amazon.com/cli/) which can be used to create buckets and/or add files to COS.
    * Export `AWS_ACCESS_KEY_ID` with your COS `access_key_id` and `AWS_SECRET_ACCESS_KEY` with your COS `secret_access_key`
+	 * e.g. in command line, enter `export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE`
 
 ### Provision a Watson Machine Learning service instance
 
@@ -182,9 +183,10 @@ $ aws s3 cp s3://your_github_id-results-audioset-classify/<your_training_id>/mod
 
 1. [Log in to Watson Studio](https://www.ibm.com/cloud/watson-studio). Create a free account if you don't have one yet.
 2. Create a new project `Audioset Classification` in Watson Studio.
-3. Navigate to `Assets -> Notebooks` and click on `New notebook`.
-4. On the next screen click on `From file` and upload the [audioclassify_inference.ipynb](audioclassify_inference.ipynb) file. 
+3. Navigate to `Assets`. At the top of the page, click on `+ Add to Project` and select `Notebook`.
+4. On the next screen click on `From file` and upload the [audioclassify_inference.ipynb](audioclassify_inference.ipynb) file from your cloned repository (`audioset-classification`). Select `Create Notebook`.
 5. Upload `final_weights.h5` (file which we downloaded in the previous step) and `eval.h5` to the object storage linked to Watson Studio. This can be done by navigating to to `assets->New data asset` or clicking on the icon on the right to popup the data upload GUI as shown in the screenshot below. 
+5. Upload `final_weights.h5` (file which we downloaded in the previous step, or can be found in your cloned repository) and `eval.h5` to the object storage linked to Watson Studio. This can be done by either navigating to `assets->New data asset` or clicking on the icon on the right to open the data upload GUI as shown in the screenshot below. 
 
 ![](doc/source/images/2.png)
 
